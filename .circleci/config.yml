@@ -13,13 +13,17 @@ jobs:
         environment:
           DT_VERSION_NUMBER: "1.0"
           DT_BUILD_NUMBER: "1"
-      
 
         steps:
         
         - checkout:
-            path: ~/circleci/CircleCITest      
-              
+            path: ~/circleci/CircleCITest
+        
+        # Install Pods
+        - run:
+              name: Install CocoaPods
+              command: |
+                  pod install
               
 workflows:
   build-test:
