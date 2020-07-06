@@ -6,23 +6,19 @@ version: 2.1
 
 jobs:
   build-and-test:
-      # Define the working directory of our project
         working_directory: ~/circleci/CircleCITest
-      # Specify the Xcode version to use.
         macos:
           xcode: 11.3.0
         
-        # TODO: Must be replaced with some env variable from circleci DT_IOSAPP_SHORT_VERSION
         environment:
           DT_VERSION_NUMBER: "1.0"
           DT_BUILD_NUMBER: "1"
       
-      # Define the steps required to build the project.
+
         steps:
         
-        # Get the code from the Repo.
         - checkout:
-            path: ~/CircleCITest
+            path: ~/circleci/CircleCITest
         
         
         # Install Pods
