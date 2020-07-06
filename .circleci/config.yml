@@ -18,28 +18,7 @@ jobs:
         steps:
         
         - checkout:
-            path: ~/circleci/CircleCITest
-        
-        
-        # Install Pods
-        - run:
-              name: Install CocoaPods
-              command: |
-                  pod install
-                     
-        # Build Application
-        - run:
-              name: Build Application
-              command: |
-                  # ./master_build_cicd.sh $CERT_PRV_KEY_PASSWORD $CERT_ENC_PASSWORD $DT_APPLE_ACCOUNT_ID $DT_APPLE_ACCOUNT_PASS $CIRCLE_BRANCH $DT_VERSION_NUMBER $DT_BUILD_NUMBER
-        
-        # Store Test Data
-        - store_test_results:
-              path: output/scan
-        - store_artifacts:
-             # path: ~/circleci/Output
-              
-              
+            path: ~/circleci/CircleCITest      
               
               
 workflows:
