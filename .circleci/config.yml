@@ -5,8 +5,9 @@
 version: 2.1
 
 orbs:
- Welcome: circleci/welcom-orb@0.4.1
+  welcome: circleci/welcom-orb@0.4.1
+
 workflows:
- welcome:
-  Jobs:
-   - welcom/run
+  welcome:
+    Jobs:
+      - welcom/run
