@@ -1,3 +1,59 @@
+# For a detailed guide to building and testing on iOS, read the docs:
+# https://circleci.com/docs/2.0/testing-ios/
+
+# Specify the config version - version 2.1 is latest.
+version: 2.1
+
+jobs:
+  build-and-test:
+      # Define the working directory of our project
+        working_directory: ~/circleci/CircleCITest
+      # Specify the Xcode version to use.
+        macos:
+          xcode: 11.3.0
+        
+        # TODO: Must be replaced with some env variable from circleci DT_IOSAPP_SHORT_VERSION
+        environment:
+          DT_VERSION_NUMBER: "1.0"
+          DT_BUILD_NUMBER: "1"
+      
+      # Define the steps required to build the project.
+        steps:
+        
+        # Get the code from the Repo.
+        - checkout:
+            path: ~/CircleCITest
+        
+        
+        # Install Pods
+        - run:
+              name: Install CocoaPods
+              command: |
+                  pod install
+                     
+        # Build Application
+        - run:
+              name: Build Application
+              command: |
+                  # ./master_build_cicd.sh $CERT_PRV_KEY_PASSWORD $CERT_ENC_PASSWORD $DT_APPLE_ACCOUNT_ID $DT_APPLE_ACCOUNT_PASS $CIRCLE_BRANCH $DT_VERSION_NUMBER $DT_BUILD_NUMBER
+        
+        # Store Test Data
+        - store_test_results:
+              path: output/scan
+        - store_artifacts:
+             # path: ~/circleci/Output
+              
+              
+              
+              
+workflows:
+  build-test:
+    jobs:
+    - build-and-test:
+        filters:
+          branches:
+            only:
+               - master
 version: 2.1
 jobs:
   test:
