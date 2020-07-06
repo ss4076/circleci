@@ -8,5 +8,5 @@ orbs:
  Welcome: circleci/welcom-orb@0.4.1
 workflows:
  welcome:
-  Job:
+  Jobs:
    - welcom/run
