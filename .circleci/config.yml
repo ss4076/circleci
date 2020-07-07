@@ -4,13 +4,29 @@
 # Specify the config version - version 2.1 is latest.
 version: 2.1
 
-orbs:
+jobs:
+  test:
+    working_directory: ~/circleci/CircleCITest
+    macos: 
+      xcode: 11.3.0
+    steps:
+      - checkout:
+          path: ../circleci
 
-  test: circleci/welcome-orb@0.4.1
+      - run:
+            name: Install CocoaPods
+            command: | 
+                pod install
+      - run:
+            name: Build Application
+            command: |
+                cd ~/circleci/  
 
 workflows:
-
   circleci_test:
-
     jobs:
-      - test/run
+      - test:
+          filters:
+             branches:
+               only:
+                   - master  
