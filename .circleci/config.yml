@@ -6,11 +6,11 @@ version: 2.1
 
 orbs:
 
-  welcome: circleci/welcome-orb@0.4.1
+  test: circleci/welcome-orb@0.4.1
 
 workflows:
 
-  welcome:
+  circleci_test:
 
     jobs:
-      - welcome/run
+      - test/run
